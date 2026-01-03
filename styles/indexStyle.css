@@ -1,0 +1,386 @@
+/* Code written by Elias Robyne 2025-12-02 */
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* BASE LAYOUT */
+html, body {
+    height: 100%;
+}
+
+
+/* BODY LAYOUT */
+body {
+    /* Enables flex layout */
+    display: flex;
+    /* Stacks children vertically */
+    flex-direction: column;
+    /* Ensures minimum height */
+    min-height: 800px;
+    /* Background color and padding */
+    background-color: #f7973d;
+    /* Top padding to match header */
+    padding-top: 60px;  
+}
+
+/* LIST STYLES */
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HEADER */
+.header {
+    /* Fixed position header with background color */
+    background-color: #cc380a;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    /* Ensures header stays on top */
+    z-index: 1000;
+}
+
+/* Style for name in header, always 1 opacity */
+.elias-robyne-text{
+    color: rgb(255, 255, 255);
+    
+}
+
+/* Flexbox container for header content. */
+.header-content{
+    display: flex;
+    /* Centers items vertically */
+    align-items: center;
+    /* Spaces all items evenly */
+    justify-content: space-between;
+    min-height: 60px;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+
+.nav-list{
+    display: flex;
+    /* Gap in between navlinks */
+    column-gap: 35px;
+}
+
+.nav-link{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    /* Hover transition takes 0.4s*/
+    transition: all 0.4s;
+}
+
+/* Style for active link */
+.nav-link.active{
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Hover opacity 1 */
+.nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+/* MAIN LAYOUT */
+.split.layout { 
+    display: flex;
+    /* Horizontal layout of children */
+    flex-direction: row;
+    /* Grow and shrink to the space */
+    flex: 1 1 auto;
+    /* Space between image and panel */
+    gap: 28px;
+    /* Stretch to fill full height of container */
+    align-items: stretch;
+}
+
+/* Big name middle */
+.name-big-start{
+    font-size: 26px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+/* Paragraph settings for content blocks */
+.profile-details-container p, .personal-anecdote p, .hobbies-list p, .future-goals-container p{
+    padding-bottom:10px;
+    border-radius:15px;
+    max-width:100%;
+    position:static;
+    color: white;
+}
+
+.profile-details-container h2, 
+.personal-anecdote h2,
+.hobbies-list h2,
+.future-goals-container h2{
+    padding-bottom: 20px;
+}
+
+/* LAYOUT PANELS */
+.layout .image{
+    /* Control image size, cant shrink or grow. Size is predetermined */
+    flex:0 0 clamp(160px, 30%, 360px);
+    min-width:140px;
+    max-width: 360px;
+    padding-top: 10px;
+    padding-left: 10px;
+    display:flex;
+}
+.layout .image img{
+    width:100%;
+    /* Limit max height to viewport height */
+    max-height:80vh;
+    /* Crop if nececerry */
+    object-fit:cover;
+    display:block;
+    /* Rounded corners */
+    border-radius:100px;  
+    height: 600px;
+}
+
+.panel{
+    /* Panel can grow and shrink to fit space */
+    flex:1 1 auto;
+    /* Shrink smaller than its content then nececcery */
+    min-width:0;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+/* PANEL GRID FOR MAIN AND SIDE  */
+.panel-grid{
+    display:grid;
+    /* Two columns: main and side (1fr 400px) */
+    grid-template-columns: 1fr 400px;
+    gap:24px;
+    /* Align items to top of grid */
+    align-items:start;
+}
+
+/* MAIN COLUMNS */
+.main-column{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* SIDE COLUMN */
+.side-column{
+    display:flex;
+    flex-direction:column;
+    gap: 25px;
+    padding-top: 20px;
+}
+
+.bio-card { 
+    padding:20px; color:#fff; 
+}
+
+/* Style applied to all main content blocks */
+.profile-details,
+.hobbies-list,
+.personal-anecdote,
+.future-goals{
+    margin-top:20px;
+    background-color: rgb(209, 87, 34);
+    padding:15px;
+    border-radius:15px;
+    max-width:100%;
+    position:static;
+    color: white;
+}
+
+/* Specific styles for future goals section */
+.future-goals-container{
+    padding-bottom: 100px;
+}
+.future-goals h2, .future-goals h3{
+    padding-bottom: 5px;
+}
+
+.future-goals p{
+    padding-bottom: 10px;
+}
+
+/* PROFILE DETAILS GRID */
+.info-grid{
+    display:grid;
+    /* Two columns: label and value */
+    grid-template-columns:auto 1fr;
+    row-gap:10px;
+    column-gap:20px;
+    max-width:400px;
+    padding-top:20px;
+    padding-left:20px;
+}
+.info-grid .label { 
+    text-align:right; 
+    font-weight:700;
+    font-size: 20px;
+
+}
+.info-grid .value {
+     text-align:left; 
+     font-size: 20px;
+}
+
+/* BUTTON */
+.btn-container{
+    display:flex;
+    gap:16px;
+    margin-top:24px;
+    align-items:center;
+}
+.btn{
+    /* Button base styles */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:240px;
+    height: 70px;
+    padding:14px 22px;
+    border-radius:10px;
+    font-weight:600;
+    /* Smooth hover transition */
+    transition: transform .15s ease, opacity .15s ease;
+}
+.btn--primary{
+    background:#fff;
+    color:#cc380a;
+}
+.btn--primary:hover{
+    /* Slightly lift button and reduce opacity on hover */
+     transform:translateY(-2px); opacity:.95; 
+    }
+
+/* Side images */
+.image-friends img,
+.image-padel img{
+    width:100%;
+    height:auto;
+    max-height:180px;
+    /* Crop if necessary */
+    object-fit:cover;
+    border-radius:20px;
+    margin-top:15px;
+}
+
+.image-friends,
+.image-padel {
+    /* Center side images */
+    position:static;
+    width:100%;
+    margin:0;
+}
+/* FOOTER */
+.site-footer {
+    /* Enable flexbox to align content*/
+    display: flex;
+    /* Center and space out footer sections */
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:15px 16px;
+    background: #cc380a;
+    font-size:0.9rem;
+    color:#fff;
+}
+.footer-legal { 
+    text-align: right; 
+}
+/* Style for copyright text */
+.footer-bottom {
+    text-align: left;
+    padding-top: 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    padding-top: 60px;
+}
+
+/* MEDIA */
+@media (max-width: 950px){ 
+    
+    /* Stack layout vertically instead of horizontal */
+    .layout {
+        flex-direction: column;
+    }
+    /* Stack split layout vertically instead of horizontal */
+    .split.layout{
+        flex-direction: column;
+    }
+
+
+    .image img {
+        width: 50%;
+        height: auto;
+        max-height: 35vh;
+        /* Whole image visible */
+        object-fit: contain;
+    }
+    .panel {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Limit size */
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        max-height: 50px;
+        margin: 0 auto;
+    }
+
+    /* Stack footer items vertically instead of horizontal */
+    .site-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+    }
+    /* Center everything */
+    .footer-contact,
+    .footer-links,
+    .footer-bottom {
+        align-self: center;
+        text-align: center;
+    }
+    
+    /* Reduce padding for footer bottom */
+    .footer-bottom {
+        padding-top: 12px;
+    }
+    .image-padel, .image-friends {
+        position: static;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto 0 auto;
+        }
+
+    .main-column, .side-column {
+        align-items: center;
+    }
+
+    .hobbies-list, .personal-anecdote, .profile-details{
+        position: static;
+        margin-top: 20px auto 0 auto;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    .panel-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+}
