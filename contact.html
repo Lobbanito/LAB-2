@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
     <title>Contact</title>
     <link rel="stylesheet" href="styles/contactStyle.css">
 </head>
+
 <body>
     <header class="header">
         <div class="header-content">
-           <p class="elias-robyne-text">Elias Robyne</p>
+            <p class="elias-robyne-text">Elias Robyne</p>
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
@@ -24,48 +26,85 @@
                         <a href="index.html#my-future" class="nav-link">My Future</a>
                     </li>
                 </ul>
-            </div>
+        </div>
         </div>
     </header>
-<body>
-    <main class="contact-main">
-        <section class="contact-form-container">
-            <h1>Contact Me</h1>
-            <form action="mailto:elias.robyne@hotmail.com?subject=Contact" method="POST" class="contact-form">
-                <fieldset class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </fieldset>
 
-                <fieldset class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </fieldset>
-                
-                <fieldset class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </fieldset>
-                
-                <button type="button" class="btn btn--primary" value="Send Email">Send Message</button>
-            </form>
-        </section>
-    </main>
-    <footer class="site-footer">
-      <address class="footer-contact">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:elias.robyne@hotmail.com">elias.robyne@hotmail.com</a></p>
-        <p class="social-inline">
-            <a href="https://www.facebook.com/Boomstylah/">Facebook</a> ·
-            <a href="https://www.instagram.com/eliasrobyn">Instagram</a> ·
-            <a href="https://se.linkedin.com/in/elias-robyne-917bb014a">LinkedIn</a>
-        </p>
-      </address>
+    <body>
+        <main class="contact-main">
+            <section class="contact-form-container">
+                <h1>Contact Me</h1>
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-row">
+                        <fieldset class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName">
+                            <small class="error-message"></small>
+                        </fieldset>
 
-    <nav class="footer-legal">
-        <a href="#">Privacy</a> · <a href="#">Terms</a>
-    </nav>
-    <div class="footer-bottom">Copyright © 2025 Elias Robyne</div>
-  </footer>
-</body>
+                        <fieldset class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName">
+                            <small class="error-message"></small>
+                        </fieldset>
+                    </div>
+
+                    <fieldset class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                        <small class="error-message"></small>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                        <small class="error-message"></small>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select a subject</option>
+                            <option value="general">General</option>
+                            <option value="freelance">Personal</option>
+                            <option value="education">Education</option>
+                            <option value="padel">Padel</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <small class="error-message"></small>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5"></textarea>
+                        <small class="error-message"></small>
+                        <span class="char-counter" id="charCounter">0 / 20 characters</span>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary">Submit</button>
+                        <button type="reset" class="btn btn--secondary">Clear</button>
+                    </div>
+
+                </form>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <address class="footer-contact">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:elias.robyne@hotmail.com">elias.robyne@hotmail.com</a></p>
+                <p class="social-inline">
+                    <a href="https://www.facebook.com/Boomstylah/">Facebook</a> ·
+                    <a href="https://www.instagram.com/eliasrobyn">Instagram</a> ·
+                    <a href="https://se.linkedin.com/in/elias-robyne-917bb014a">LinkedIn</a>
+                </p>
+            </address>
+
+            <nav class="footer-legal">
+                <a href="#">Privacy</a> · <a href="#">Terms</a>
+            </nav>
+            <div class="footer-bottom">Copyright © 2025 Elias Robyne</div>
+        </footer>
+    </body>
+
 </html>
