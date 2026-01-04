@@ -1,4 +1,5 @@
 /* Code written by Elias Robyne 2025-12-02 */
+/* Updated 2026-01-04 */
 /* GLOBAL RESET */
 * {
     margin: 0;
@@ -75,23 +76,19 @@ a {
     column-gap: 35px;
 }
 
+
 .nav-link{
-    color: #333;
+    color: (0, 0, 0, 0.4);
     font-size: 15px;
     /* Hover transition takes 0.4s*/
-    transition: all 0.4s;
-}
-
-/* Style for active link */
-.nav-link.active{
-    color: #000;
+    transition: all 0.1s;
 }
 
 /* Hover opacity 1 */
 .nav-link:hover {
-    color: #000;
+    color: rgba(0,0,0, 1);
+    font-weight: bold;
 }
-
 /* Main content */
 .contact-main {
     /* Can grow and take up all space vertically */
@@ -153,10 +150,18 @@ a {
     display: block;
     width: 100%; 
     padding: 9px;
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 2px solid #ccc;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
     border-radius: 6px;
     color: black;
     outline: none;
+}
+
+/* Blue border for focus when the fields are not in error or success. */
+.contact-form input:focus:not(.input-error):not(.input-success),
+.contact-form textarea:focus:not(.input-error):not(.input-success),
+.contact-form select:focus:not(.input-error):not(.input-success) {
+    border: 2px solid #2196f3;
 }
 
 
@@ -167,7 +172,7 @@ a {
 }
 
 .error-message {
-    color: #ff4d4d;
+    color: #dc3545;
     font-size: 0.85rem;
     margin-top: 6px;
     /* Hidden by default */
@@ -175,8 +180,8 @@ a {
 }
 
 .input-error {
-    border-color: #ff4d4d;
-    border: 2px solid #ff4d4d !important;
+    border-color: #dc3545;
+    border: 2px solid #dc3545 !important;
 }
 .input-success {
     border: 2px solid #4caf50 !important;
