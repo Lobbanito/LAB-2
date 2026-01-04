@@ -11,7 +11,7 @@ This is a project completed as part of a schoolwork where we learn to use Javasc
 - Real-time character counter for message input
 - Visual feedback from validation (red/green borders and error text)
 - Success popup with overlay and scroll lock
-- Layout that's adaptive to both computers and mobilephones. (media @ 900px and @ 600px.)
+- Layout that's adaptive to both computers and mobilephones. (media @ 950px and @ 600px.)
 
 ## Project Structure
 
