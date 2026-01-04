@@ -1,6 +1,9 @@
+/* Code written by Elias Robyne 2026-01-04 */
+
+//Enables strict mode. 
 "use strict";
 
-/* Fields/elements.  */
+// DOM elements or fields.
 const form = document.querySelector(".contact-form");
 const messageInput = document.getElementById("message");
 const charCounter = document.getElementById("charCounter");
@@ -9,15 +12,33 @@ const popupText = document.getElementById("popupText");
 const overlay = document.getElementById("overlay");
 const clearBtn = document.querySelector('button[type="reset"]');
 
-/* Event listeners */
+// Event listeners
 messageInput.addEventListener("input", updateCharCounter);  
 form.addEventListener("submit", formSubmit);
 
-clearBtn.addEventListener("click", () => {
-    updateCharCounter();
-})
+form.addEventListener("reset", () => {
+    const fields = form.querySelectorAll("input, textarea, select");
 
-/* Function for submit button */
+    fields.forEach(field => {
+        const error = field.parentElement.querySelector(".error-message");
+
+        // Remove error messages.
+        if (error) {
+            error.textContent = "";
+            error.style.display = "none";
+        }
+
+        // Remove validation border styles.
+        field.classList.remove("input-error");
+        field.classList.remove("input-success");
+    });
+
+    // RAF awaits the values to reset and then calls updateCharCounter.
+    requestAnimationFrame(updateCharCounter);
+});
+
+
+// Function for form validation and submission. 
 function formSubmit(event) {
     event.preventDefault();
 
@@ -28,7 +49,7 @@ function formSubmit(event) {
         const error = field.parentElement.querySelector(".error-message");
 
 
-        /* If the field is empty. */
+        // If the field is empty.
         if (field.value.trim() === "")
         {
             showError(field, error, field.dataset.requiredError);
@@ -36,7 +57,7 @@ function formSubmit(event) {
             return;
         }
 
-        /* If the text in the field is invalid */
+        // If the text in the field is invalid
         if (!isValidField(field))
         {
             showError(field, error, field.dataset.formatError);
@@ -44,15 +65,17 @@ function formSubmit(event) {
             return;
         }
 
-        /* No wrong input, show success */
+        // Field is valid, success. 
         clearError(field, error);
     });
 
     
+    //Checks message length.
     if (messageInput.value.length < 20){
         hasErrors = true;
     }
 
+    //Everything is filled as intended, success popup is shown and the form is reset. 
     if (!hasErrors){
         showSuccessPopup();
         form.reset();
@@ -64,23 +87,29 @@ function formSubmit(event) {
     }
 }
 
+// Regex and build in functions to control that the fields are filled as intended. 
+// Task was to build a function for each field. This seems like a better solution. 
 function isValidField(field){
+
+    // Only characters, no special chars or numbers, "-" is allowed.  
     if (field.id === "firstName" || field.id === "lastName") {
         return /^[a-zA-ZåäöÅÄÖ-]+(\s[a-zA-ZåäöÅÄÖ-]+)*$/.test(field.value.trim());
     }
-
+    // Email is in right format, built in function checkValidity used. 
     if (field.type === "email"){
         return field.checkValidity();
     }
-
+    // Only numbers, space, "+" and "-" in tel. 
     if (field.type === "tel"){
         return /^[0-9+\s-]+$/.test(field.value);
     }
 
+    // Message must be more than 20 characters.  
     if (field.id === "message"){
         return field.value.trim().length >= 20;
     }
 
+    // Checks that a subject is chosen. 
     if (field.tagName === "SELECT") {
         return field.value !== "";
     }
@@ -89,7 +118,7 @@ function isValidField(field){
 }
 
 
-/* Function for when an field is in error */ 
+// Function for invalid fields, UI.
 function showError(field, errorElement, message){
     errorElement.textContent = message;
     errorElement.style.display = "block";
@@ -98,7 +127,7 @@ function showError(field, errorElement, message){
 
 }
 
-/* Function for when a field is right */
+// Function for valid fields, UI.
 function clearError(field, errorElement){
     errorElement.textContent = "";
     errorElement.style.display = "none";
@@ -106,7 +135,7 @@ function clearError(field, errorElement){
     field.classList.add("input-success");
 }
 
-/* Updates char counter while typing */
+// Updates live char counter and color while typing
 function updateCharCounter(){
     const length = messageInput.value.length;
     charCounter.textContent = `${length} / 20 characters`;
@@ -119,6 +148,7 @@ function updateCharCounter(){
     }
 }
 
+// Function for success popup, the code is already in html and css, it's just hidden. Here we show it. 
 function showSuccessPopup(){
     const firstName = document.getElementById("firstName").value;
 
@@ -126,18 +156,21 @@ function showSuccessPopup(){
     popup.classList.remove("hidden");
     overlay.classList.remove("hidden");
 
+    //No scroll while popup is active. 
     document.body.classList.add("no-scroll");
 
-
+    //Popup closes after 3 seconds. 
     setTimeout(closePopup, 3000)
 }
 
+// Event listener on char "Escape", user have an option to close popup with escape. ARIA standard.  
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !popup.classList.contains("hidden")) {
         closePopup();
     }
 });
 
+//Reusable fucntion to close the popup window (DRY). 
 function closePopup() {
     popup.classList.add("hidden");
     overlay.classList.add("hidden");
