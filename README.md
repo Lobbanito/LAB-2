@@ -57,7 +57,9 @@ This is a project completed as part of a schoolwork where we learn to use Javasc
 
 ## How to run
 1. Clone the repository
-2. Open index.html in a browser
+2. Download from page or run 
+<pre> git clone https://github.com/Lobbanito/LAB-2.git </pre>
+3. Open index.html in a browser
 
 ## Author
 Elias Robyne 
