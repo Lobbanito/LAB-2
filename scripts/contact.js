@@ -10,7 +10,6 @@ const charCounter = document.getElementById("charCounter");
 const popup = document.getElementById("successPopup");
 const popupText = document.getElementById("popupText");
 const overlay = document.getElementById("overlay");
-const clearBtn = document.querySelector('button[type="reset"]');
 
 // Event listeners
 messageInput.addEventListener("input", updateCharCounter);  
@@ -27,7 +26,7 @@ form.addEventListener("reset", () => {
             error.textContent = "";
             error.style.display = "none";
         }
-
+        
         // Remove validation border styles.
         field.classList.remove("input-error");
         field.classList.remove("input-success");
