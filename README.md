@@ -13,6 +13,12 @@ This is a project completed as part of a schoolwork where we learn to use Javasc
 - Success popup with overlay and scroll lock
 - Layout that's adaptive to both computers and mobilephones. (media @ 950px and @ 600px.)
 
+## How to run
+1. Clone the repository
+2. (Download from page or run 
+<pre> git clone https://github.com/Lobbanito/LAB-2/commits/main/ </pre>
+3. Open index.html in a browser
+
 ## Project Structure
 
 - contact-form/
@@ -54,12 +60,6 @@ This is a project completed as part of a schoolwork where we learn to use Javasc
 - Backend integration
 - Improved accessibility (test on multiple browsers and different screens.
 - Unit- and pen-testing with server side.
-
-## How to run
-1. Clone the repository
-2. Download from page or run 
-<pre> git clone https://github.com/Lobbanito/LAB-2.git </pre>
-3. Open index.html in a browser
 
 ## Author
 Elias Robyne 
